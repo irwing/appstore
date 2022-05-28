@@ -1,0 +1,20 @@
+{
+  "name": "appstore",
+  "version": "1.0.0",
+  "description": "Project Mini App Store with Javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irwing/appstore.git"
+  },
+  "keywords": [],
+  "author": "Irwing Naranjo <khalisser@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/irwing/appstore/issues"
+  },
+  "homepage": "https://github.com/irwing/appstore#readme"
+}
