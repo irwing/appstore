@@ -1,10 +1,21 @@
 {
-  "name": "appstore",
+  "name": "storeapp",
   "version": "1.0.0",
-  "description": "Project Mini App Store with Javascript",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "12.1.6",
+    "react": "18.1.0",
+    "react-dom": "18.1.0"
+  },
+  "devDependencies": {
+    "eslint": "8.16.0",
+    "eslint-config-next": "12.1.6"
   },
   "repository": {
     "type": "git",
