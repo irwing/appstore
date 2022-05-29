@@ -1,8 +1,4 @@
-// import formatMoney
-import Img from 'next/image'
 import { numberToMoney } from '../utils/formats'
-
-const cartIcon = require('../public/cart-shopping.svg')
 
 export const ProductCard = ({ product }) => {
   return (
