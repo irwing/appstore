@@ -1,6 +1,6 @@
 import { numberToMoney, firstLetterUppercase } from '../utils/formats'
 
-export const ProductCard = (props) => {
+export const ProductCardCart = (props) => {
   const { product } = props
 
   return (
@@ -14,8 +14,8 @@ export const ProductCard = (props) => {
         <p className="product-info-calification">{product.calificacion} vendidos</p>
         <div className="product-info-footer">
           <p className="product-info-price">{numberToMoney(product.precio)}</p>
-          <button className="product-info-addtocart">
-            Agregar al carro
+          <button className="product-info-removetocart">
+            Quitar
           </button>
         </div>
       </div>

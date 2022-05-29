@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Img from 'next/image'
 
 const logo = require('../public/icon.png')
@@ -8,21 +9,27 @@ const Header = () => {
     <header className="header">
       <div className="header-container">
         <div className="header-logo">
-          <Img
-            src={logo} alt="Cuponatric logo"
-            layout='responsive'
-          />
-        </div>
-        <a href="/cart">
-          <div className="header-cart">
+          <Link href="/">
+            <span className='link'>
               <Img
-                src={cartIcon} alt="Cart icon"
-                width={24}
-                height={24}
+                src={logo} alt="Cuponatric logo"
+                layout='responsive'
               />
-              <span className="count">3</span>
-          </div>
-        </a>
+            </span>
+          </Link>
+        </div>
+        <Link href="/cart">
+          <span className='link'>
+            <div className="header-cart">
+                <Img
+                  src={cartIcon} alt="Cart icon"
+                  width={24}
+                  height={24}
+                />
+                <span className="count">3</span>
+            </div>
+          </span>
+        </Link>
       </div>
     </header>
   )

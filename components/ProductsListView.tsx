@@ -1,12 +1,34 @@
 import React, { useState, useEffect } from 'react'
 import { ProductCard } from './ProductCard'
 import Filters from '../components/Filters'
+import { on } from 'events'
+import handler from '../pages/api/products/find'
 // TODO: *** ADD types
 
-export const ProductsListView = () => {
+const ButtonLoadMore = (props) => {
+  const { onClick } = props
+
+  return (
+    <div className="products-list-loadmore">
+      <button onClick={onClick}>
+        {/* REFACTOR add text to language file */}
+        {'Ver más'}
+      </button>
+    </div>
+  )
+}
+
+export const ProductsListView = (props) => {
+  const { filter, loadMore } = props
+
   const [products, setProducts] = useState([])
   const [page, setPage] = useState(1)
   const [order, setOrder] = useState('nombre-asc')
+
+  // handler filter
+  const handleFilter = () => {
+    setPage(page + 1)
+  }
 
   useEffect(() => {
     setPage(1)
@@ -29,17 +51,12 @@ export const ProductsListView = () => {
 
   return (
     <>
-      <Filters order={order} setOrder={setOrder} />
+      {filter && <Filters setOrder={setOrder} />}
       <div className="products-list">
         {products.map(product => (
             <ProductCard key={product.id_empresa} product={product} />
         ))}
-        <div className="products-list-loadmore">
-          <button onClick={() => setPage(page + 1)}>
-            {/* REFACTOR add text to language file */}
-            {'Ver más'}
-          </button>
-        </div>
+        {loadMore && <ButtonLoadMore onClick={handleFilter} />}
       </div>
     </>
   )
