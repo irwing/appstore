@@ -24,6 +24,7 @@ export const ProductsListView = () => {
           ? setProducts(data)
           : setProducts([...products, ...data])
       })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, order])
 
   return (
