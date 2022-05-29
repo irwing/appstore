@@ -1,4 +1,6 @@
-import { ProductsListView } from '../components/products'
+import { ProductsListView } from '../components/ProductsListView'
+import Banner from '../components/Banner'
+import Filters from '../components/Filters'
 
 const products = [
   {
@@ -55,7 +57,8 @@ export default function Home () {
   return (
     <div>
       <main>
-        <p>Productos...</p>
+        <Banner />
+        <Filters />
         <ProductsListView products={products} />
       </main>
     </div>
