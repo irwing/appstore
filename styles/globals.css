@@ -1,3 +1,4 @@
+/* RESET */
 html,
 body {
   padding: 0;
@@ -14,6 +15,47 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/* HEADER */
+.header {
+  border-top: 5px solid #F07439;
+}
+  .header-container {
+    padding: 15px 10px;
+    border-bottom: 2px solid #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+  }
+    .header-logo {
+      flex: 1;
+      height: 35px;
+      max-width: 180px;
+      margin-right: 20px;
+    }
+    .header-cart {
+      flex: 1;
+      background: #f1f1f1;
+      width: 80px;
+      margin-right: 20px;
+      border-radius: 20pt;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 10px;
+    }
+      /* TODO: FIX when text in cart hav more than 5 numbers */
+      .header-cart span.count {
+        background: #F07439;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 12px;
+        font-weight: bold;
+      }
 
 .card-product {
   background: #f1f1f1;
