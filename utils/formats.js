@@ -6,4 +6,13 @@ const numberToMoney = (number) => {
     .replaceAll(',', '.')
 }
 
-module.exports = { numberToMoney }
+const firstLetterUppercase = (string) => {
+  string = string.toLowerCase().split(' ').map(function (word) {
+    word = word.charAt(0).toUpperCase() + word.slice(1)
+    return word
+  })
+
+  return string.join(' ')
+}
+
+module.exports = { numberToMoney, firstLetterUppercase }

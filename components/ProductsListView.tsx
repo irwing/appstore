@@ -34,10 +34,12 @@ export const ProductsListView = () => {
         {products.map(product => (
             <ProductCard key={product.id_empresa} product={product} />
         ))}
-        <button className="products-list-loadmore" onClick={() => setPage(page + 1)}>
-          {/* REFACTOR add text to language file */}
-          {'Ver más'}
-        </button>
+        <div className="products-list-loadmore">
+          <button onClick={() => setPage(page + 1)}>
+            {/* REFACTOR add text to language file */}
+            {'Ver más'}
+          </button>
+        </div>
       </div>
     </>
   )
