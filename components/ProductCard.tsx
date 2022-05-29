@@ -1,4 +1,4 @@
-import { numberToMoney } from '../utils/formats'
+import { numberToMoney, firstLetterUppercase } from '../utils/formats'
 
 export const ProductCard = ({ product }) => {
   return (
@@ -7,7 +7,7 @@ export const ProductCard = ({ product }) => {
         <img src={product.banner} />
       </div>
       <div className="product-info">
-        <h3 className="product-info-name">{product.nombre}</h3>
+        <h3 className="product-info-name">{firstLetterUppercase(product.nombre)}</h3>
         <p className="product-info-category">{product.tipo_servicio}</p>
         <p className="product-info-calification">{product.calificacion} vendidos</p>
         <div className="product-info-footer">
