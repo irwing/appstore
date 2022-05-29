@@ -90,17 +90,37 @@ a {
     
   }
 
+/* PRODUCTS LIST VIEW */
+.products-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.products-list-loadmore {
+  width: 120px;
+  background: #F07439;
+  color: #fff;
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 10pt 4pt 10pt 4pt;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
 /* PRODUCT CARD */
 .product {
-margin-bottom: 20px;
-display: flex;
-flex-direction: row;
-}
-.product-image {
+  margin-bottom: 20px;
   display: flex;
-  width: 160px;
-  height: 100;
+  flex-direction: row;
+  width: 100%;
 }
+  .product-image {
+    display: flex;
+    width: 160px;
+    height: 100;
+  }
   .product-image img {
     border: 1px solid #f1f1f1;
     border-radius: 10pt;
