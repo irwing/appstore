@@ -24,7 +24,12 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx", 
+    "**/*.tsx",
+    "pages/**/*",
+    "components/**/*",
+    "typings/**/*",
+    "utils/**/*",
+    "database/**/*",
     "pages/_app.tsx"
   ],
   "exclude": [
