@@ -9,6 +9,12 @@ export const ProductsCartView = () => {
   // TODO: *** REFACTOR extract fetch to a service
   // TODO: *** REFACTOR add url to fetch from env
   useEffect(() => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || []
+    const idsProducts = cart.reduce((acc, product) => {
+      acc.push(product.id_empresa)
+      return acc
+    }, [])
+
     const url = 'http://localhost:3000/api/products/find'
     fetch(url, {
       method: 'POST',
@@ -16,7 +22,7 @@ export const ProductsCartView = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        ids: [5642, 5906]
+        ids: idsProducts
       })
     })
       .then(res => res.json())

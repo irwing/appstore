@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Img from 'next/image'
 
@@ -5,6 +6,15 @@ const logo = require('../public/icon.png')
 const cartIcon = require('../public/cart-shopping.svg')
 
 const Header = () => {
+  const [cartCount, setCartCount] = useState(0)
+
+  useEffect(() => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || []
+    if (cart.length > 0) {
+      setCartCount(cart.length)
+    }
+  }, [])
+
   return (
     <header className="header">
       <div className="header-container">
@@ -26,7 +36,7 @@ const Header = () => {
                   width={24}
                   height={24}
                 />
-                <span className="count">3</span>
+                <span className="header-cart-count" id="header-cart-count">{cartCount}</span>
             </div>
           </span>
         </Link>

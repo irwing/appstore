@@ -57,7 +57,7 @@ a {
     padding-left: 10px;
   }
     /* TODO: FIX when text in cart hav more than 5 numbers */
-    .header-cart span.count {
+    .header-cart span.header-cart-count {
       background: #F07439;
       width: 35px;
       height: 35px;
