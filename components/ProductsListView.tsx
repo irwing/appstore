@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ProductCard } from './ProductCard'
 import Filters from '../components/Filters'
-import { on } from 'events'
-import handler from '../pages/api/products/find'
 // TODO: *** ADD types
 
 const ButtonLoadMore = (props) => {

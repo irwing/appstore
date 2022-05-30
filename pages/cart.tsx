@@ -13,7 +13,7 @@ const CartDetail = () => {
     const cart = JSON.parse(localStorage.getItem('cart')) || []
     const total = cart.reduce((acc, product) => acc + product.cantidad * product.precio, 0)
     setTotal(total)
-  })
+  }, [])
 
   const handlePayment = (e) => {
     e.preventDefault()
