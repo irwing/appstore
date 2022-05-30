@@ -6,7 +6,7 @@ ensureConnection()
 
 export default async function handler (req, res) {
   const page = req.query.page || 1
-  const limit = req.query.limit || 10
+  const limit = req.query.limit || 12
   const order = req.query.order?.split('-') || 'nombre-asc'
 
   try {

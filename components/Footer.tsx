@@ -3,7 +3,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <p>
-          Dev by <strong><a target="__blank" href="https://irwing.tech" rel="noreferrer">Irwing Naranjo</a></strong>
+          Dev with ❤️ <a style={{ marginLeft: '5px' }} target="__blank" href="https://irwing.tech" rel="noreferrer"> by Irwing Naranjo</a>
         </p>
       </div>
     </footer>

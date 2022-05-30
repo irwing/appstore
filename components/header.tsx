@@ -33,8 +33,8 @@ const Header = () => {
             <div className="header-cart">
                 <Img
                   src={cartIcon} alt="Cart icon"
-                  width={24}
-                  height={24}
+                  width={20}
+                  height={20}
                 />
                 <span className="header-cart-count" id="header-cart-count">{cartCount}</span>
             </div>

@@ -1,4 +1,7 @@
+import Img from 'next/image'
 import { numberToMoney, firstLetterUppercase } from '../utils/formats'
+
+const trashIcon = require('../public/trash-can.svg')
 
 export const ProductCardCart = (props) => {
   const { product } = props
@@ -22,17 +25,19 @@ export const ProductCardCart = (props) => {
 
   return (
     <div className="product" id={`product-${product.id_empresa}`}>
-      <div className="product-image">
-        <img src={product.banner} />
-      </div>
+      <div className="product-image" style={{ backgroundImage: `url("${product.banner}")` }}></div>
       <div className="product-info">
         <h3 className="product-info-name">{firstLetterUppercase(product.nombre)}</h3>
         <p className="product-info-category">{product.tipo_servicio}</p>
-        <p className="product-info-calification">{product.calificacion} vendidos</p>
+        <p className="product-info-cantidad">{product.cantidad} X {numberToMoney(product.precio)}</p>
         <div className="product-info-footer">
-          <p className="product-info-price">{numberToMoney(product.precio)}</p>
+          <p className="product-info-price">{numberToMoney(product.cantidad * product.precio)}</p>
           <button className="product-info-removetocart" onClick={() => handleRemoveToCart(product.id_empresa)}>
-            Quitar
+            <Img
+              src={trashIcon} alt="Trash icon"
+              width={14}
+              height={14}
+            />
           </button>
         </div>
       </div>
