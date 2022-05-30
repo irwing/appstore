@@ -5,7 +5,7 @@ import Img from 'next/image'
 const logo = require('../public/icon.png')
 const cartIcon = require('../public/cart-shopping.svg')
 
-const Header = () => {
+const header = () => {
   const [cartCount, setCartCount] = useState(0)
 
   useEffect(() => {
@@ -45,4 +45,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default header
