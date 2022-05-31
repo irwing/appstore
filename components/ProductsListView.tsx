@@ -20,9 +20,15 @@ const ButtonLoadMore = (props) => {
   )
 }
 
-export const ProductsListView = (props) => {
-  const { filter, loadMore } = props
+const ListViewEmpty = () => {
+  return (
+    <div style={{ textAlign: 'center', paddingTop: 20, paddingBottom: 50 }}>
+      <p>No hay productos disponibles</p>
+    </div>
+  )
+}
 
+export const ProductsListView = () => {
   const [products, setProducts] = useState([])
   const [page, setPage] = useState(1)
   const [order, setOrder] = useState('nombre-asc')
@@ -51,16 +57,18 @@ export const ProductsListView = (props) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, order])
 
-  return (
-    <>
-      {filter && <Filters setOrder={setOrder} />}
-      <div className="products-list">
-        {products.map(product => (
-            <ProductCard key={product.id_empresa} product={product} />
-        ))}
-        {loadMore && <ButtonLoadMore onClick={handleFilter} />}
-      </div>
-    </>
-  )
+  return (products.length === 0)
+    ? (<ListViewEmpty />)
+    : (
+        <>
+          <Filters setOrder={setOrder} />
+          <div className="products-list">
+            {products.map(product => (
+                <ProductCard key={product.id_empresa} product={product} />
+            ))}
+            <ButtonLoadMore onClick={handleFilter} />
+          </div>
+        </>
+      )
 }
 module.exports = { ProductsListView }

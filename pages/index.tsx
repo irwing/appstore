@@ -7,10 +7,7 @@ export default function Home () {
     <div>
       <main>
         <Banner />
-        <ProductsListView
-          filter={true}
-          loadMore={true}
-        />
+        <ProductsListView />
       </main>
     </div>
   )

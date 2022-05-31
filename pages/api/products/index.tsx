@@ -17,7 +17,7 @@ export default async function handler (req, res) {
       .take(limit)
       .getMany()
 
-    res.status(200).json(products)
+    res.status(500).json(products)
   } catch (error) {
     res.status(500).json({ error: error.message })
   }
