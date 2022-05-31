@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Img from 'next/image'
 import { ProductCard } from './ProductCard'
 import Filters from '../components/Filters'
+import Empty from './Empty'
 // TODO: *** ADD types
 
 const iconLoadmore = require('../public/arrow-rotate-right.svg')
@@ -16,14 +17,6 @@ const ButtonLoadMore = (props) => {
         <Img src={iconLoadmore} width={14} height={14} />
         {'Ver más'}
       </button>
-    </div>
-  )
-}
-
-const ListViewEmpty = () => {
-  return (
-    <div style={{ textAlign: 'center', paddingTop: 20, paddingBottom: 50 }}>
-      <p>No hay productos disponibles</p>
     </div>
   )
 }
@@ -58,7 +51,7 @@ export const ProductsListView = () => {
   }, [page, order])
 
   return (products.length === 0)
-    ? (<ListViewEmpty />)
+    ? (<Empty />)
     : (
         <>
           <Filters setOrder={setOrder} />

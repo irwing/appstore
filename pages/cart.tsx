@@ -125,7 +125,6 @@ export default function Cart () {
     <div>
       <main>
         <CartDetail />
-        <p>Productos de tu pedido.</p>
         <ProductsCartView />
       </main>
     </div>

@@ -12,15 +12,12 @@ export const ProductCardCart = (props) => {
       const productExistsIndex = cart.findIndex(product => product.id_empresa === id)
       cart.splice(productExistsIndex, 1)
       localStorage.setItem('cart', JSON.stringify(cart))
-
-      // remove product in DOM
       const productElement = document.getElementById(`product-${id}`)
       productElement.remove()
-
-      // update class header-cart
-      const headerCart = document.getElementById('header-cart-count')
-      headerCart.innerHTML = cart.length.toString()
     }
+
+    const headerCart = document.getElementById('header-cart-count')
+    headerCart.innerHTML = cart.length.toString()
   }
 
   return (

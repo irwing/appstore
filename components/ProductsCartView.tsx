@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ProductCardCart } from './ProductCardCart'
+import Empty from './Empty'
 // TODO: *** ADD types
 
 export const ProductsCartView = () => {
@@ -28,23 +29,20 @@ export const ProductsCartView = () => {
       .then(data => setProducts(data))
   }, [])
 
-  return (
-    <>
-      <div className="products-list">
-        {cart.length === 0 && (
-          <div className="products-list-empty">
-            <p>No hay productos en el carrito</p>
+  return (cart.length === 0)
+    ? (<Empty />)
+    : (
+        <>
+          <p>{'Productos de tu pedido.'}</p>
+          <div className="products-list">
+            {products.length > 0 && products.map(product => {
+              product.cantidad = cart.find(cartProduct => cartProduct.id_empresa === product.id_empresa).cantidad
+              return (
+                <ProductCardCart key={product.id_empresa} product={product} />
+              )
+            })}
           </div>
-        )}
-        {products.length > 0 && products.map(product => {
-          product.cantidad = cart.find(cartProduct => cartProduct.id_empresa === product.id_empresa).cantidad
-
-          return (
-            <ProductCardCart key={product.id_empresa} product={product} />
-          )
-        })}
-      </div>
-    </>
-  )
+        </>
+      )
 }
 module.exports = { ProductsCartView }
