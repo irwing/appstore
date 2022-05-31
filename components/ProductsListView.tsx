@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import Img from 'next/image'
 import { ProductCard } from './ProductCard'
 import Filters from '../components/Filters'
 // TODO: *** ADD types
+
+const iconLoadmore = require('../public/arrow-rotate-right.svg')
 
 const ButtonLoadMore = (props) => {
   const { onClick } = props
@@ -10,6 +13,7 @@ const ButtonLoadMore = (props) => {
     <div className="products-list-loadmore">
       <button onClick={onClick}>
         {/* REFACTOR add text to language file */}
+        <Img src={iconLoadmore} width={14} height={14} />
         {'Ver más'}
       </button>
     </div>
