@@ -1,6 +1,6 @@
 import ensureConnection from '../../../database'
 import { Product } from '../../../database/entities/Product'
-import TypeProduct from '../../../typings/TypeProduct'
+import { TypeProductList } from '../../../typings/TypeProduct'
 
 ensureConnection()
 
@@ -16,7 +16,7 @@ export default async function handler (req, res) {
   }
 
   try {
-    const products:TypeProduct[] = await Product.findByIds(ids)
+    const products:TypeProductList = await Product.findByIds(ids)
     return res.status(200).json(products)
   } catch (error) {
     return res.status(500).json({ error: error.message })

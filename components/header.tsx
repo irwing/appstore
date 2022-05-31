@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Img from 'next/image'
-
-const logo = require('../public/icon.png')
-const cartIcon = require('../public/cart-shopping.svg')
+import logo from '../public/icon.png'
+import cartIcon from '../public/cart-shopping.svg'
+import lang from '../lang'
+import { TypeCartList } from '../typings/TypeCart'
 
 const Header = () => {
-  const [cartCount, setCartCount] = useState(0)
+  const [cartCount, setCartCount] = useState<number>(0)
 
   useEffect(() => {
-    const cart = JSON.parse(localStorage.getItem('cart')) || []
+    const cart:TypeCartList = JSON.parse(localStorage.getItem('cart')) || []
     if (cart.length > 0) {
       setCartCount(cart.length)
     }
@@ -22,7 +23,7 @@ const Header = () => {
           <Link href="/">
             <span className='link'>
               <Img
-                src={logo} alt="Cuponatric logo"
+                src={logo} alt={lang.altLogo}
                 layout='responsive'
               />
             </span>
@@ -32,7 +33,7 @@ const Header = () => {
           <span className='link'>
             <div className="header-cart">
                 <Img
-                  src={cartIcon} alt="Cart icon"
+                  src={cartIcon} alt={lang.altIconCart}
                   width={20}
                   height={20}
                 />

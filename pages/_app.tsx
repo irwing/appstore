@@ -1,14 +1,15 @@
 import Head from 'next/head'
 import Header from '../components/header'
 import Footer from '../components/Footer'
+import lang from '../lang'
 import '../styles/globals.css'
 
 function App ({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>{'AppStore 🚀 Next.js'}</title>
-        <meta name="description" content={'App store for testing Next.js'} />
+        <title>{lang.appTitle}</title>
+        <meta name="description" content={lang.appDescription} />
         <link rel="icon" href="/favicon.png" />
       </Head>
       <div className="wrapper">

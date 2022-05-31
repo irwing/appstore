@@ -1,7 +1,7 @@
 import { getRepository } from 'typeorm'
 import ensureConnection from '../../../database'
 import { Product } from '../../../database/entities/Product'
-import TypeProduct from '../../../typings/TypeProduct'
+import { TypeProductList } from '../../../typings/TypeProduct'
 
 ensureConnection()
 
@@ -11,7 +11,7 @@ export default async function handler (req, res) {
   const order = req.query.order?.split('-') || 'nombre-asc'
 
   try {
-    const products:TypeProduct[] = await getRepository(Product)
+    const products:TypeProductList = await getRepository(Product)
       .createQueryBuilder('product')
       // @ts-ignore
       .orderBy(`product.${order[0]}`, order[1].toUpperCase())

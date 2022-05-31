@@ -1,5 +1,13 @@
-const Filters = (props) => {
-  const { order, setOrder } = props
+import lang from '../lang'
+
+type TypeProps = {
+  order: string
+  setOrder: (order:string) => void
+}
+
+const Filters = (props:TypeProps) => {
+  const order = props.order || 'nombre-asc'
+  const setOrder = props.setOrder
 
   const handleChange = (e) => {
     setOrder(e.target.value)
@@ -8,14 +16,14 @@ const Filters = (props) => {
   return (
     <div className="filter">
       <div className="filter-title">
-        Ordena por
+        {'Ordenar por'}
       </div>
       <div className="filter-select">
         <select name="filter-order" id="filter-order" value={order} onChange={handleChange}>
-          <option value="nombre-asc">Nombre Asc</option>
-          <option value="nombre-desc">Nombre Desc</option>
-          <option value="precio-asc">Menor Precio</option>
-          <option value="precio-desc">Mayor Precio</option>
+          <option value="nombre-asc">{lang.filterNameAsc}</option>
+          <option value="nombre-desc">{lang.filterNameDesc}</option>
+          <option value="precio-asc">{lang.filterPriceAsc}</option>
+          <option value="precio-desc">{lang.filterPriceDesc}</option>
         </select>
       </div>
     </div>

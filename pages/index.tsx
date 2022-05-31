@@ -1,6 +1,5 @@
-
-import { ProductsListView } from '../components/ProductsListView'
 import Banner from '../components/Banner'
+import { ProductsListView } from '../components/ProductsListView'
 
 export default function Home () {
   return (

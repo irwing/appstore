@@ -1,46 +1,53 @@
 import Img from 'next/image'
 import { numberToMoney, firstLetterUppercase } from '../utils/formats'
+import { TypeProduct } from '../typings/TypeProduct'
+import { TypeCartList } from '../typings/TypeCart'
+import cartIcon from '../public/cart-shopping.svg'
+import lang from '../lang'
 
-const cartIcon = require('../public/cart-shopping.svg')
+type TypeProps = { product: TypeProduct }
 
-export const ProductCard = (props) => {
+const ProductCard = (props:TypeProps) => {
   const { product } = props
+  const {
+    id_empresa: id,
+    nombre,
+    tipo_servicio: tipoServicio,
+    calificacion,
+    precio,
+    banner
+  } = product
 
   const handleAddToCart = (id:number) => {
-    const cart = JSON.parse(localStorage.getItem('cart')) || []
+    const cart:TypeCartList = JSON.parse(localStorage.getItem('cart')) || []
 
-    const productExistsIndex = cart.findIndex(product => product.id_empresa === id)
+    const productIndex = cart.findIndex(product => product.id_empresa === id)
 
-    if (cart.length === 0) {
-      cart.push({ id_empresa: id, cantidad: 1, precio: product.precio })
+    if (productIndex !== -1) {
+      cart[productIndex].cantidad++
     } else {
-      if (productExistsIndex !== -1) {
-        cart[productExistsIndex].cantidad++
-      } else {
-        cart.push({ id_empresa: id, cantidad: 1, precio: product.precio })
-      }
+      cart.push({ id_empresa: id, cantidad: 1, precio: product.precio })
     }
 
+    // TODO: *** change to global state
     localStorage.setItem('cart', JSON.stringify(cart))
-
-    // update class header-cart
     const headerCart = document.getElementById('header-cart-count')
     headerCart.innerHTML = cart.length.toString()
   }
 
   return (
     <div className="product">
-      <div className="product-image" style={{ backgroundImage: `url("${product.banner}")` }}></div>
+      <div className="product-image" style={{ backgroundImage: `url("${banner}")` }}></div>
       <div className="product-info">
-        <h3 className="product-info-name">{firstLetterUppercase(product.nombre)}</h3>
-        <p className="product-info-category">{product.tipo_servicio}</p>
-        <p className="product-info-calification">{product.calificacion} {'vendidos'}</p>
+        <h3 className="product-info-name">{firstLetterUppercase(nombre)}</h3>
+        <p className="product-info-category">{tipoServicio}</p>
+        <p className="product-info-calification">{calificacion} {lang.productCardSells}</p>
         <div className="product-info-footer">
-          <p className="product-info-price">{numberToMoney(product.precio)}</p>
-          <button className="product-info-addtocart" onClick={() => handleAddToCart(product.id_empresa)}>
-            {'Agregar'}
+          <p className="product-info-price">{numberToMoney(precio)}</p>
+          <button className="product-info-addtocart" onClick={() => handleAddToCart(id)}>
+            {lang.productCardAddToCard}
             <Img
-              src={cartIcon} alt="Cart icon"
+              src={cartIcon} alt={'Cart icon'}
               style={{ marginLeft: 2 }}
               width={24}
               height={14}
@@ -51,3 +58,5 @@ export const ProductCard = (props) => {
     </div>
   )
 }
+
+export default ProductCard

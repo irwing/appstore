@@ -1,16 +1,16 @@
 import Img from 'next/image'
-
-const banner1 = require('../public/banner1.png')
-const banner2 = require('../public/banner2.jpeg')
+import banner1 from '../public/banner1.png'
+import banner2 from '../public/banner2.jpeg'
+import lang from '../lang'
 
 const Banner = () => {
   return (
     <div className="banner">
-      <a target="__blank" href="https://github.com/irwing/appstore">
-        <Img src={banner1} alt="Promoción Cine" />
+      <a target="__blank" href={'https://github.com/irwing/appstore'}>
+        <Img src={banner1} alt={lang.altBanner1} />
       </a>
-      <a target="__blank" href="https://github.com/irwing/appstore">
-        <Img src={banner2} alt="Promoción Zoologico" />
+      <a target="__blank" href={'https://github.com/irwing/appstore'}>
+        <Img src={banner2} alt={lang.altBanner2} />
       </a>
     </div>
   )

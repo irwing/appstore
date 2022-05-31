@@ -1,29 +1,28 @@
 import React, { useState, useEffect } from 'react'
-import { ProductCardCart } from './ProductCardCart'
+import ProductCardCart from './ProductCardCart'
+import { TypeCartList } from '../typings/TypeCart'
 import Empty from './Empty'
-// TODO: *** ADD types
+import lang from '../lang'
 
 export const ProductsCartView = () => {
   const [products, setProducts] = useState([])
   const [cart, setCart] = useState([])
 
-  // TODO: *** REFACTOR optimize double inital fecth
-  // TODO: *** REFACTOR extract fetch to a service
-  // TODO: *** REFACTOR add url to fetch from env
   useEffect(() => {
-    const cart = JSON.parse(localStorage.getItem('cart')) || []
-    const idsProducts = cart.reduce((acc, product) => {
+    const cart:TypeCartList = JSON.parse(localStorage.getItem('cart')) || []
+
+    const ids:number[] = cart.reduce((acc, product) => {
       acc.push(product.id_empresa)
       return acc
     }, [])
 
     setCart(cart)
 
-    const url = 'http://localhost:3000/api/products/find'
+    const url:string = `${process.env.NEXT_PUBLIC_API}/products/find`
     fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ids: idsProducts })
+      body: JSON.stringify({ ids })
     })
       .then(res => res.json())
       .then(data => setProducts(data))
@@ -33,7 +32,7 @@ export const ProductsCartView = () => {
     ? (<Empty />)
     : (
         <>
-          <p>{'Productos de tu pedido.'}</p>
+          <p>{lang.cartTitleProducts}</p>
           <div className="products-list">
             {products.length > 0 && products.map(product => {
               product.cantidad = cart.find(cartProduct => cartProduct.id_empresa === product.id_empresa).cantidad
