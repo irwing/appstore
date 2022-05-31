@@ -1,24 +1,26 @@
+import { getRepository } from 'typeorm'
 import ensureConnection from '../../../database'
 import { Product } from '../../../database/entities/Product'
-import { getRepository } from 'typeorm'
+import TypeProduct from '../../../typings/TypeProduct'
 
 ensureConnection()
 
 export default async function handler (req, res) {
-  const page = req.query.page || 1
-  const limit = req.query.limit || 12
+  const page:number = req.query.page || 1
+  const limit:number = req.query.limit || 12
   const order = req.query.order?.split('-') || 'nombre-asc'
 
   try {
-    const products = await getRepository(Product)
+    const products:TypeProduct[] = await getRepository(Product)
       .createQueryBuilder('product')
+      // @ts-ignore
       .orderBy(`product.${order[0]}`, order[1].toUpperCase())
       .skip(limit * (page - 1))
       .take(limit)
       .getMany()
 
-    res.status(500).json(products)
+    return res.status(200).json(products)
   } catch (error) {
-    res.status(500).json({ error: error.message })
+    return res.status(500).json({ error: error.message })
   }
 }
