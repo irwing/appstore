@@ -12,6 +12,7 @@ Se utilizó Next.js para el BackEnd y el FrontEnd, Formik para la validación de
 - Se propone un diseño básico
 
 ### Bonus
+- React Context para mantener el estado global del carrito
 - Diseño realizado con CSS puro
 - Diseño un poco mas acabado y responsive
 - Configuración eslint
@@ -23,6 +24,11 @@ Se utilizó Next.js para el BackEnd y el FrontEnd, Formik para la validación de
 - Función extra - botón cargar mas en el home
 - Función extra - eliminar del carrito
 - Validación cuando no hay datos en el listado o en el carrito
+
+### Issues / Mejoras
+- Agregar test unitarios a los componentes y al API
+- Agregar SSR (Server Side Render) para mejorar el SEO
+- Refactorizar el componente CartDetail porque quedó muy complejo
 
 ### Tiempo aproximado de trabajo
 
