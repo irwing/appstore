@@ -20,6 +20,7 @@ Se utilizó Next.js para el BackEnd y el FrontEnd, Formik para la validación de
 - Utilización de TypeScript
 - Utilización de Docker
 - Despliegue en producción con CI/CD autoconfigurado
+- Despliegue de BD en RDS de AWS (si quiere trabajar con local puede usar el Docker descrito abajo)
 - Función extra - banners en el home
 - Función extra - botón cargar mas en el home
 - Función extra - eliminar del carrito
