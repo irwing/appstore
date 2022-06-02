@@ -1,13 +1,17 @@
+import React, { useContext } from 'react'
 import Img from 'next/image'
 import { numberToMoney, firstLetterUppercase } from '../utils/formats'
 import { TypeProduct } from '../typings/TypeProduct'
 import { TypeCartList } from '../typings/TypeCart'
 import cartIcon from '../public/cart-shopping.svg'
 import lang from '../lang'
+import { CartContext } from '../Contexts/CartContext.js'
 
 type TypeProps = { product: TypeProduct }
 
 const ProductCard = (props:TypeProps) => {
+  const cartContext = useContext(CartContext)
+  const { cart, setCart } = cartContext
   const { product } = props
   const {
     id_empresa: id,
@@ -19,20 +23,21 @@ const ProductCard = (props:TypeProps) => {
   } = product
 
   const handleAddToCart = (id:number) => {
-    const cart:TypeCartList = JSON.parse(localStorage.getItem('cart')) || []
+    const cartStorage:TypeCartList = JSON.parse(localStorage.getItem('cart')) || []
 
-    const productIndex = cart.findIndex(product => product.id_empresa === id)
+    const productIndex = cartStorage.findIndex(product => product.id_empresa === id)
 
     if (productIndex !== -1) {
-      cart[productIndex].cantidad++
+      cartStorage[productIndex].cantidad++
     } else {
-      cart.push({ id_empresa: id, cantidad: 1, precio: product.precio })
+      cartStorage.push({ id_empresa: id, cantidad: 1, precio: product.precio })
     }
 
-    // TODO: *** change to global state
-    localStorage.setItem('cart', JSON.stringify(cart))
-    const headerCart = document.getElementById('header-cart-count')
-    headerCart.innerHTML = cart.length.toString()
+    localStorage.setItem('cart', JSON.stringify(cartStorage))
+    setCart({
+      total: cart.total + product.precio,
+      count: cart.count + 1
+    })
   }
 
   return (
