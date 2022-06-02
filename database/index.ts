@@ -5,12 +5,12 @@ import { Product } from './entities/Product'
 const options = {
   default: {
     type: 'mysql',
-    host: process.env.DB_HOST || 'localhost',
+    host: process.env.DB_HOST || 'appstore-mysql.ci0wqj9rijgh.us-east-2.rds.amazonaws.com',
     port: process.env.DB_PORT || 3306,
     username: process.env.DB_USERNAME || 'appstore',
     password: process.env.DB_PASSWORD || 'appstore#2022',
     database: process.env.DB_DATABASE_NAME || 'appstore',
-    synchronize: process.env.NODE_ENV !== 'production',
+    synchronize: true,
     entities: [Product]
   }
 }

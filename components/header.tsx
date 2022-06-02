@@ -4,7 +4,7 @@ import Img from 'next/image'
 import logo from '../public/icon.png'
 import cartIcon from '../public/cart-shopping.svg'
 import lang from '../lang'
-import { CartContext } from '../Contexts/CartContext.js'
+import { CartContext } from '../contexts/CartContext.js'
 
 const Header = () => {
   const { cart } = useContext(CartContext)

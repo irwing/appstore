@@ -5,7 +5,7 @@ import { Formik } from 'formik'
 import { numberToMoney } from '../utils/formats'
 import payIcon from '../public/money-bill-1.svg'
 import lang from '../lang'
-import { CartContext } from '../Contexts/CartContext.js'
+import { CartContext } from '../contexts/CartContext.js'
 
 const CartDetail = () => {
   const { cart } = useContext(CartContext)

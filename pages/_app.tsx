@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Header from '../components/header'
 import Footer from '../components/Footer'
-import { CartProvider } from '../Contexts/CartContext.js'
+import { CartProvider } from '../contexts/CartContext.js'
 
 import lang from '../lang'
 import '../styles/globals.css'

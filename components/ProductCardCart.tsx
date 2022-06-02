@@ -5,7 +5,7 @@ import { TypeProduct } from '../typings/TypeProduct'
 import { TypeCartList } from '../typings/TypeCart'
 import trashIcon from '../public/trash-can.svg'
 import lang from '../lang'
-import { CartContext } from '../Contexts/CartContext.js'
+import { CartContext } from '../contexts/CartContext.js'
 
 type TypeProps = { product: TypeProduct }
 
