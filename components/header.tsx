@@ -1,21 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext } from 'react'
 import Link from 'next/link'
 import Img from 'next/image'
 import logo from '../public/icon.png'
 import cartIcon from '../public/cart-shopping.svg'
 import lang from '../lang'
-import { TypeCartList } from '../typings/TypeCart'
+import { CartContext } from '../contexts/CartContext.js'
 
 const Header = () => {
-  const [cartCount, setCartCount] = useState<number>(0)
-
-  useEffect(() => {
-    const cart:TypeCartList = JSON.parse(localStorage.getItem('cart')) || []
-    if (cart.length > 0) {
-      setCartCount(cart.length)
-    }
-  }, [])
-
+  const { cart } = useContext(CartContext)
+  const { count } = cart
   return (
     <header className="header">
       <div className="header-container">
@@ -37,7 +30,7 @@ const Header = () => {
                   width={20}
                   height={20}
                 />
-                <span className="header-cart-count" id="header-cart-count">{cartCount}</span>
+                <span className="header-cart-count" id="header-cart-count">{count}</span>
             </div>
           </span>
         </Link>

@@ -1,13 +1,17 @@
+import React, { useContext } from 'react'
 import Img from 'next/image'
 import { numberToMoney, firstLetterUppercase } from '../utils/formats'
 import { TypeProduct } from '../typings/TypeProduct'
 import { TypeCartList } from '../typings/TypeCart'
 import trashIcon from '../public/trash-can.svg'
 import lang from '../lang'
+import { CartContext } from '../contexts/CartContext.js'
 
 type TypeProps = { product: TypeProduct }
 
 const ProductCardCart = (props:TypeProps) => {
+  const cartContext = useContext(CartContext)
+  const { cart, setCart } = cartContext
   const { product } = props
   const {
     id_empresa: id,
@@ -19,17 +23,25 @@ const ProductCardCart = (props:TypeProps) => {
   } = product
 
   const handleRemoveToCart = (id:number) => {
-    const cart:TypeCartList = JSON.parse(localStorage.getItem('cart')) || []
-    if (cart.length > 0) {
-      const productExistsIndex = cart.findIndex(product => product.id_empresa === id)
-      cart.splice(productExistsIndex, 1)
-      localStorage.setItem('cart', JSON.stringify(cart))
-      const productElement = document.getElementById(`product-${id}`)
-      productElement.remove()
-    }
+    const cartStorage:TypeCartList = JSON.parse(localStorage.getItem('cart')) || []
 
-    const headerCart = document.getElementById('header-cart-count')
-    headerCart.innerHTML = cart.length.toString()
+    if (cartStorage.length > 0) {
+      const productExistsIndex = cartStorage.findIndex(product => product.id_empresa === id)
+      if (productExistsIndex !== -1) {
+        const precio = cartStorage[productExistsIndex].precio
+        const cantidadRemove = cartStorage[productExistsIndex].cantidad
+        const totalRemove = precio * cantidadRemove
+
+        cartStorage.splice(productExistsIndex, 1)
+        localStorage.setItem('cart', JSON.stringify(cartStorage))
+        document.getElementById(`product-${id}`).remove()
+
+        setCart({
+          total: cart.total - totalRemove,
+          count: cart.count - cantidadRemove
+        })
+      }
+    }
   }
 
   return (

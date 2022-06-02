@@ -1,20 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext } from 'react'
 import Link from 'next/link'
 import Img from 'next/image'
 import { Formik } from 'formik'
 import { numberToMoney } from '../utils/formats'
-import { TypeCartList } from '../typings/TypeCart'
 import payIcon from '../public/money-bill-1.svg'
 import lang from '../lang'
+import { CartContext } from '../contexts/CartContext.js'
 
 const CartDetail = () => {
-  const [total, setTotal] = useState<number>(0)
-
-  useEffect(() => {
-    const cart:TypeCartList = JSON.parse(localStorage.getItem('cart')) || []
-    const total = cart.reduce((acc, product) => acc + product.cantidad * product.precio, 0)
-    setTotal(total)
-  }, [])
+  const { cart } = useContext(CartContext)
+  const { total } = cart
 
   return (
     <div>
