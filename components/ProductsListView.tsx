@@ -5,6 +5,9 @@ import ProductCard from './ProductCard'
 import LoadMore from './LoadMore'
 import { TypeProductList } from '../typings/TypeProduct'
 
+const HOSTNAME = process.env.HOST || 'localhost'
+const PORT = process.env.PORT || 3000
+
 export const ProductsListView = () => {
   const [products, setProducts] = useState<TypeProductList>([])
   const [page, setPage] = useState<number>(1)
@@ -15,7 +18,7 @@ export const ProductsListView = () => {
   }
 
   useEffect(() => {
-    const url:string = `${process.env.NEXT_PUBLIC_API}/products?order=${order}&page=${page}`
+    const url:string = `http://${HOSTNAME}:${PORT}/api/products?order=${order}&page=${page}`
     fetch(url)
       .then(res => res.json())
       .then(data => {
