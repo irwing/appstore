@@ -35,6 +35,23 @@ Se utilizó Next.js para el BackEnd y el FrontEnd, Formik para la validación de
 
 Tomando en cuenta que es una práctica y no se le aplico tiempo completo estoy muy conforme con el resultado obtenido con 12 horas de desarrollo y teniendo en cuenta que no tenía experiencia en el desarrollo con Next.js, ni TypeScript, ni TypeORM, ni Formik. Pero con lectura de la documentación y las bases de ya obtenidas en otras tecnologías se logró completar las tareas.
 
+### Instalación
+```sh
+npm install
+```
+
+### Ejecución
+
+***En modo desarrollo***
+```sh
+npm run dev
+```
+
+***En modo producción*** se debe configurar las variables de entorno si se desea usar con un dominio.
+```sh
+npm start
+```
+
 ### Instalación de MySQL con Docker
 
 ***Build and run image***
