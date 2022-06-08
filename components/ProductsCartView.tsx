@@ -4,6 +4,9 @@ import { TypeCartList } from '../typings/TypeCart'
 import Empty from './Empty'
 import lang from '../lang'
 
+const HOSTNAME = process.env.HOST || 'localhost'
+const PORT = process.env.PORT || 3000
+
 export const ProductsCartView = () => {
   const [products, setProducts] = useState([])
   const [cart, setCart] = useState([])
@@ -18,7 +21,7 @@ export const ProductsCartView = () => {
 
     setCart(cart)
 
-    const url:string = `${process.env.NEXT_PUBLIC_API}/products/find`
+    const url:string = `http://${HOSTNAME}:${PORT}/api/products/find`
     fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
